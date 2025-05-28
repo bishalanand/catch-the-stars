@@ -1,25 +1,37 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { width: 100%; height: 100%; overflow: hidden; font-family: Arial, sans-serif; }
- #game {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+#game {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: #1b2735; /* fallback */
-  background-image: 
-    url('images/background.jpg');
+  background-color: #1b2735;
+  background-image: url('images/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center bottom;
 }
-#basket {    
+
+#basket {
   position: absolute;
-  bottom:0px;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 20vw;
   max-width: 200px;
-  height: 120px;  /* Set explicit height to show background image */
-  background-image: url('images/bucket.png'); /* adjust path if needed */
+  height: 15vh;
+  max-height: 120px;
+  background-image: url('images/bucket.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -29,69 +41,94 @@
   justify-content: center;
 }
 
-  .falling {
-      position: absolute;
-      top: 0;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
+.falling {
+  position: absolute;
+  top: 0;
+  width: 5vw;
+  max-width: 40px;
+  height: 5vw;
+  max-height: 40px;
+  border-radius: 50%;
 }
-  .star {
-      background-image: url('images/star.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
+
+.star {
+  background-image: url('images/star.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bomb {
+  position: absolute;
+  top: 0;
+  width: 7vw;
+  max-width: 50px;
+  height: 7vw;
+  max-height: 50px;
+  border-radius: 50%;
+  background-image: url('images/bomb.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 5px solid crimson;
+  box-shadow: 0 0 15px crimson;
+}
+
+#scoreboard {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-size: 1.2em;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+#game-over {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5em;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px red;
+  text-align: center;
+}
+
+#replay-button {
+  margin-top: 20px;
+  font-size: 1em;
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#replay-button:hover {
+  background-color: #218838;
+}
+@media (max-width: 600px) {
+  #scoreboard {
+    font-size: 1em;
+    padding: 8px 12px;
   }
-  .bomb {
-      position: absolute;
-      top: 0;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-image: url('images/bomb.png'); /* Ensure correct path */
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      border: 5px,crimson;
-      box-shadow: 0 0 15px crimson;
+
+  #game-over {
+    font-size: 1.5em;
+    padding: 15px 30px;
   }
-     
-    #scoreboard {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      color: white;
-      font-size: 20px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    }
-    #game-over {
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 40px;
-      color: white;
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 20px 40px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px red;
-      text-align: center;
-    }
-    #replay-button {
-      margin-top: 20px;
-      font-size: 20px;
-      padding: 10px 20px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-    #replay-button:hover {
-      background-color: #218838;
-    }
+
+  #replay-button {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+}
